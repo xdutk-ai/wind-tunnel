@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аэродинамическая труба — 2D симулятор</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand__title">Аэродинамическая труба</div>
+        <div class="brand__subtitle">2D Wind Tunnel (Canvas)</div>
+      </div>
+
+      <section class="controls">
+        <div class="section-title">Инструменты</div>
+
+        <div class="tool-grid">
+          <button id="btnDraw" class="tool-btn is-active" type="button">Рисование</button>
+          <button id="btnErase" class="tool-btn" type="button">Ластик</button>
+          <button id="btnToggleSim" class="tool-btn tool-btn--primary" type="button">Пауза</button>
+          <button id="btnClear" class="tool-btn tool-btn--danger" type="button">Очистить</button>
+        </div>
+
+        <div class="instruction">
+          Зажми ЛКМ на холсте, чтобы рисовать препятствие. Ластик стирает его.
+        </div>
+
+        <div class="image-upload">
+          <input id="fileInput" type="file" accept="image/png,image/jpeg,image/jpg" />
+          <label class="upload-btn" for="fileInput">Загрузить изображение</label>
+          <div class="upload-hint">
+            Белый и зелёный фон удаляется, объект превращается в твёрдое препятствие.
+          </div>
+        </div>
+
+        <div class="section-title">Параметры потока</div>
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label for="speedRange" class="slider-label">Скорость потока</label>
+            <div class="slider-value" id="speedValue">1.00</div>
+          </div>
+          <input id="speedRange" class="slider" type="range" min="0.2" max="4" step="0.01" value="1" />
+          <div class="slider-meta">Ускоряет поток и делает завихрения заметнее.</div>
+        </div>
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label for="brushRange" class="slider-label">Размер кисти / ластика</label>
+            <div class="slider-value" id="brushValue">14</div>
+          </div>
+          <input id="brushRange" class="slider" type="range" min="2" max="60" step="1" value="14" />
+          <div class="slider-meta">Меняет радиус рисования препятствий.</div>
+        </div>
+
+        <div class="tips">
+          Чем сложнее форма, тем интереснее срыв потока и вихри.
+        </div>
+      </section>
+    </aside>
+
+    <main class="stage">
+      <div class="canvas-wrap">
+        <canvas id="c" width="1200" height="720"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
